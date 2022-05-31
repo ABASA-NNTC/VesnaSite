@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Загрузка файла</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class="header">
+		<a href="index.html">Главная</a>
+		<a href="import.html">Добавить файл GEOJSON</a>
+		<a class="login" href="login.html">Вход/Регистрация</a>
+	</div>
+
+	<div class="main_what">
+		<h1>Что вы будете загружать?</h1>
+
+	</div>
+
+	<div class="main_import">
+		<div class="main_f">
+			<div class="main_f_f">
+			<input type="submit" value="Участки" id="show_f" onclick="showf()">
+			</div>
+			<h1>Загрузите файл GEOJSON для участков</h1>
+
+			<form action="https://7ff1-5-227-28-6.ngrok.io/abasa" enctype="multipart/form-data" method="post">
+		   	<input type="file" name="filejson" multiple accept="application/json/geojson">
+		   	<h1>Введите данные GEOJSON</h1>
+		   	<textarea rows="10" cols="45" name="textarea"></textarea>
+		   	<div class="sendfile">
+		   		<input type="submit" value="Отправить">
+		   	</div>
+		  	</form>
+		</div>
+
+		<div class="main_c">
+			<div class="main_c_c">
+			<input type="submit" value="Кадастры" id="show_cad" onclick="showcad()">
+			</div>
+			<h1>Загрузите файл GEOJSON для кадастров</h1>
+
+			<form action="https://7ff1-5-227-28-6.ngrok.io/abasa" enctype="multipart/form-data" method="post">
+		   	<input type="file" name="filejson" multiple accept="application/json/geojson">
+		   	<h1>Введите данные GEOJSON</h1>
+		   	<textarea rows="10" cols="45" name="textarea"></textarea>
+		   	<div class="sendfile">
+		   		<input type="submit" value="Отправить">
+		   	</div>
+		  	</form>
+		</div>
+	</div>
+
+<script type="text/javascript" src="script_for_import.js"></script>
+</body>
+</html>

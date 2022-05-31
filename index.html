@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Главная</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://maps.api.2gis.ru/2.0/loader.js"></script>
+</head>
+<body>
+
+	<div class="header">
+		<a href="index.html">Главная</a>
+		<a class="login" href="login.html">Вход/Регистрация</a>
+	</div>
+
+	<div class="main">
+
+		<div id="map" class="content_map">
+		</div>
+
+		<div class="content_right"> 
+
+				<h1>Список кадастровых участков:</h1>
+
+				<div class="load_geojson">
+			<h3>Загрузите файл GEOJSON</h3>
+
+		   	<input type="file" name="filejson" multiple accept="json/geojson" onchange="uploadFile(this)">
+		   	<div class="sendfile">
+		   		<input type="submit" value="Отправить">
+		   	</div>
+
+			</div>
+
+			<div class="buttons">
+				<input type="submit" id="buttonFields" value="Поля">
+				<input type="submit" id="buttonCadastre" value="Кадастры" >
+			</div>
+
+				<input type="checkbox" id="all_f" onchange="fun_all()"> Выбрать всё
+				<hr>
+
+			<div id="fieldsDiv"> <!-- Поля -->
+
+			</div>
+
+			<div id="cadastreDiv"> <!-- Кадастры -->
+	<!-- 			<div>
+				<input type="checkbox" id="el1_c" onchange="fun1_c()"> 1 кадастр
+				</div> -->
+			</div>
+
+			<div class="enter_map">
+				<input type="submit" value="Применить" id="enter_map" onclick="showField()">
+				<input type="submit" value="Сбросить карты" id="enter_map" onclick="reload()">
+			</div>
+
+				<div class="main_down">
+					<div class="h1_text">
+						<h1>Выберите нужные вам критерии:</h1>
+					</div>
+
+					<div class="category">
+
+					<div>
+						<input type="checkbox" name="Find_all_main_two" id="Find_all_main_two">
+						<label for="Find_all_main_two">Выбрать все</label>
+					</div>
+					<hr>
+
+					<div>
+						<input type="checkbox" name="field" id="field">
+						<label for="field">Показать поле</label>
+					</div>
+
+					<div>
+						<input type="checkbox" name="cadastre" id="cadastre">
+						<label for="cadastre">Показать кадастр</label>
+					</div>
+
+					<div>
+						<input type="checkbox" name="bord_cad" id="bord_cad">
+						<label for="bord_cad">Показать границы</label>
+					</div>
+
+					<div>
+						<input type="checkbox" name="bord_field" id="bord_field">
+						<label for="bord_field">Показать границы поля</label>
+					</div>
+
+					<div>
+						<input type="checkbox" name="entry" id="entry">
+						<label for="entry">Показать вхождение</label>
+					</div>
+
+					<div>
+						<input type="checkbox" name="capture" id="capture">
+						<label for="capture">Показать захват</label>
+					</div>
+
+					<div>
+						<input type="checkbox" name="unused" id="unused">
+						<label for="unused">Показать неиспользуемые участки</label>
+					</div>
+
+					</div>
+
+					<div class="otchet">
+						<input type="submit" value="Скачать отчет" id="otchet">
+					</div>
+				</div>
+
+		</div>
+	</div>
+
+
+	<div class="footer">
+		<p>Site was developed by team "ABASA"</p>
+	</div>
+	<script type="text/javascript" src="fieldsHandler.js"></script>
+	<script type="text/javascript" src="uploadFile.js"></script>
+	<script type="text/javascript" src="filter.js"></script>
+	<script type="text/javascript" src="script_for_map.js"></script>
+</body>
+</html>
