@@ -229,4 +229,10 @@ border: 3px solid black;
 }
 
 .enter_number_cad {
-displa
+display: none;
+}
+
+.checkboxDiv {
+	display: flex;
+	flex-direction: column;
+}
