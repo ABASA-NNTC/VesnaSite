@@ -1,4 +1,6 @@
-let SERVER_URL = 'https://localhost:5000';
+let SERVER_URL = 'http://localhost:5000';
+let processedGJS = filter;
+let curLayer;
 
 function updateMap() {
 	let fieldsToProcess = [];
@@ -10,29 +12,75 @@ function updateMap() {
 	let dataToSend = {
 		cadasters: cadastersToProcess,
 		fields: fieldsToProcess,
-		filters: fieldsToProcess
+		filters: filtersProcess
 	};
 
-
-	
+	sendToServer(dataToSend);
 }
 
+
+function drawGJS(gjsObj) {
+	let layer = DG.geoJson(gjsObj, {
+        style: function (feature) {
+            return {
+                stroke: true,
+                fill: true,
+                color: feature.properties.stroke,
+                fillColor: feature.properties.fill,
+                fillOpacity: feature.properties["fill-opacity"],
+            };
+        }
+    }	
+    );
+	removeLayer();
+	layer.addTo(mapDG);
+	curLayer = layer;
+	console.log("нарисовал");
+}
+
+function removeLayer() {
+	if (curLayer) {
+		curLayer.remove();
+	}
+}
 function sendToServer(data) {
-  return new Promise(function(succeed, fail) {
-    var req = new XMLHttpRequest();
-    req.open("GET", SERVER_URL + '/geo', true);
-    req.addEventListener("load", function() {
-      if (req.status < 400)
-        succeed(req.responseText);
-      else
-        fail(new Error("Request failed: " + req.statusText));
-    });
-    req.addEventListener("error", function() {
-      fail(new Error("Network error"));
-    });
-    req.send(null);
-  });
-}
+	var formData = new FormData();
+	formData.append("json", JSON.stringify(data));
+	let fetchData = {
+		method: 'POST',
+		body: formData,
+		headers: {
+		'Access-Control-Allow-Origin': '*'
+		},
+	};
+
+	return fetch(SERVER_URL + "/geo", fetchData)
+	.then((resp) => resp.json())
+	.then(function (data) {
+		console.log(data);
+		drawGJS(data);	
+	});
+  }
+
+  function downloadReport(data) {
+	var formData = new FormData();
+	formData.append("json", JSON.stringify(data));
+	let fetchData = {
+		method: 'POST',
+		body: formData,
+		headers: {
+		'Access-Control-Allow-Origin': '*'
+		},
+	};
+
+	return fetch(SERVER_URL + "/geo/report", fetchData)
+	.then((resp) => resp.json())
+	.then(function (data) {
+		console.log(data);
+		drawGJS(data);	
+	});
+  }  
+  }
 
 function prepareData(fieldsToProcess, cadastersToProcess, filtersProcess) {
 	for(let elem of cadastersDiv.children) {

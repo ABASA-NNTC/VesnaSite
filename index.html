@@ -50,12 +50,6 @@
 				<input type="checkbox" id="el1_c" onchange="fun1_c()"> 1 кадастр
 				</div> -->
 			</div>
-
-			<div class="enter_map">
-				<input type="submit" value="Обновить" id="updateMapButton" onclick="updateMap()">
-				<input type="submit" value="Скачать отчёт" id="dloadReportButton" onclick="reload()">
-			</div>
-
 				<div class="main_down">
 					<div class="h1_text">
 						<h1>Выберите нужные вам фильтры для отображения:</h1>
@@ -79,12 +73,12 @@
 					</div>
 
 					<div>
-						<input type="checkbox" name="bord_cad">
+						<input type="checkbox" name="border_cad">
 						<label for="bord_cad">Показать границы кадастра</label>
 					</div>
 
 					<div>
-						<input type="checkbox" name="bord_field">
+						<input type="checkbox" name="border_field">
 						<label for="bord_field">Показать границы поля</label>
 					</div>
 
@@ -105,10 +99,10 @@
 
 					</div>
 				</div>
-				<div class="otchet">
-					<input type="submit" value="Скачать отчет" id="otchet">
+				<div class="enter_map">
+					<input type="submit" value="Обновить" id="updateMapButton" onclick="updateMap()">
+					<input type="submit" value="Скачать отчёт" id="dloadReportButton" onclick="reload()">
 				</div>
-
 		</div>
 	</div>
 
@@ -120,7 +114,7 @@
 	<script type="text/javascript" src="uploadFile.js"></script>
 	<script type="text/javascript" src="filtersHandler.js"></script>
 	<script type="text/javascript" src="filter.js"></script>
-	<script type="text/javascript" src="updateMap.js"></script>
 	<script type="text/javascript" src="script_for_map.js"></script>
+	<script type="text/javascript" src="updateMap.js"></script>	
 </body>
 </html>

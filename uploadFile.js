@@ -46,7 +46,7 @@ function readFile(file, objContent) {
 
   reader.onload = function() {
     console.log("complete");
-    objContent.content = reader.result;
+    objContent.content = JSON.parse(reader.result);
     objContent.status = 1;
     console.log(objContent);
   };
